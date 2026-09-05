@@ -1,7 +1,7 @@
 {
-  description = "Hello-world Discord bot";
+  description = "Discord bot that creates discussion threads for Zoho Mail";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
   outputs = { self, nixpkgs }:
     let
@@ -21,13 +21,13 @@
     {
       packages = forAllSystems (system: {
         default = packageFor system;
-        hello-discord-bot = self.packages.${system}.default;
+        zoho-discord-bot = self.packages.${system}.default;
       });
 
       apps = forAllSystems (system: {
         default = {
           type = "app";
-          program = "${self.packages.${system}.default}/bin/hello-discord-bot";
+          program = "${self.packages.${system}.default}/bin/zoho-discord-bot";
         };
       });
     };
